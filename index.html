@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Suika Game · 经典水果版</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#ff5e62" />
+  <link rel="apple-touch-icon" href="icons/icon-192.png" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="大西瓜" />
+</head>
+<body>
+  <div class="game-wrap">
+    <header class="top-bar">
+      <div class="title">🍉 合成大西瓜</div>
+      <button id="btn-restart-global" class="btn-restart-global" type="button">重新开始</button>
+    </header>
+
+    <div id="score" class="score-top">分数：0</div>
+
+    <div class="stage">
+      <div id="game-wrap">
+        <canvas id="game-canvas" width="400" height="600"></canvas>
+      <!-- 游戏结束遮罩 -->
+      <div id="game-over-overlay" class="hidden">
+        <div class="overlay-card">
+          <h2>游戏结束</h2>
+          <p>最终分数：<span id="final-score">0</span></p>
+          <button id="btn-restart">重新开始</button>
+        </div>
+      </div>
+      <!-- 开场遮罩 -->
+      <div id="start" class="overlay hidden">
+        <div class="panel">
+          <h2>🍉 合成大西瓜</h2>
+          <p>移动鼠标瞄准，点击投放水果。<br />相同水果相撞会合成更大的水果！</p>
+          <button id="begin">开始游戏</button>
+        </div>
+      </div>
+      </div><!-- /#game-wrap -->
+    </div>
+  </div>
+
+  <script src="vendor/matter.min.js"></script>
+  <script src="fruits/index.js"></script>
+  <script src="fruits/fruit-01-cherry.js"></script>
+  <script src="fruits/fruit-02-strawberry.js"></script>
+  <script src="fruits/fruit-03-grape.js"></script>
+  <script src="fruits/fruit-04-lemon.js"></script>
+  <script src="fruits/fruit-05-orange.js"></script>
+  <script src="fruits/fruit-06-apple.js"></script>
+  <script src="fruits/fruit-07-pear.js"></script>
+  <script src="fruits/fruit-08-peach.js"></script>
+  <script src="fruits/fruit-09-pineapple.js"></script>
+  <script src="fruits/fruit-10-watermelon.js"></script>
+  <script src="game.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function () {
+        navigator.serviceWorker.register('sw.js').catch(function (e) { console.warn('SW 注册失败', e); });
+      });
+    }
+  </script>
+</body>
+</html>
